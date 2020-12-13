@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+    <title>Predict Wind Energy</title>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body >
+
+  <div class="topnav" id="myTopnav">
+    <a href="https://github.com/Rituraj9/IBM-Energy_Output"><i class="fa fa-info-circle"></i> About</a>
+  </div>
+  <div class="login">
+  <h1>Diabetics Prediction System</h1>
+  <form class="text-center" style="border-style: solid; color: #757575; margin-bottom:10px" method="POST" action="/predict">
+    <table width="100%">
+      <tbody>
+          <tr>
+            <td>
+              <div class="form-field">{{ form.Pregnancies.label }} {{ form.Pregnancies }}</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="form-field">{{ form.Glucose.label }} {{ form.Glucose }}</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="form-field">{{ form.BloodPressure.label }} {{ form.BloodPressure }}</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="form-field">{{ form.SkinThickness.label }} {{ form.SkinThickness }}</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="form-field">{{ form.Insulin.label }} {{ form.Insulin }}</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="form-field">{{ form.BMI.label }} {{ form.BMI }}</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="form-field ">{{ form.DiabetesPedigreeFunction.label }} {{ form.DiabetesPedigreeFunction }}</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="form-field ">{{ form.Age.label }} {{ form.Age }}</div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+    <input id="submit" style="margin-bottom: 10px;" name="submit" type="submit" onclick="startSpinner()" value="Predict">
+    
+    <br>
+  </form>
+
+  <div class="d-flex justify-content-center">
+    <div id="loader" style="color:black; display: none;" class="spinner-border"></div>
+  </div>
+  <div class="output-container">
+    <center>
+      <div id="output">
+        <h2 id="a">Probability that You are having Diabetes is:</h2>
+        <h2 id="b">{{ form.abc }}</h2>
+      </div>
+    </center>
+  </div>
+</div>
+  <script>
+
+window.onload = function exampleFunction() { 
+  
+  // var output = document.getElementById("output");
+  // output.style.display = "none"
+} 
+
+    function startSpinner() {
+      var x = document.getElementById("loader");
+      x.style.display = "block";
+      var output = document.getElementById("output");
+      output.style.display = "none"
+      setTimeout(function () {
+        var y = document.getElementById("output");
+        var x = document.getElementById("loader");
+        var a = document.getElementById("a");
+        var b = document.getElementById("b");
+        x.style.display = "none";
+        y.style.display = "block"
+        a.style.display = "block"
+        b.style.display = "block"
+      }, 3000);
+
+    }
+  </script>
+
+</body>
+
+</html>
